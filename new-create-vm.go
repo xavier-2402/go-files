@@ -10,6 +10,19 @@ import (
     "google.golang.org/api/option"
 )
 
+// Funciones auxiliares para convertir valores a punteros
+func stringPtr(s string) *string {
+    return &s
+}
+
+func boolPtr(b bool) *bool {
+    return &b
+}
+
+func int64Ptr(i int64) *int64 {
+    return &i
+}
+
 func main() {
     ctx := context.Background()
 
@@ -28,20 +41,20 @@ func main() {
         Project: projectID,
         Zone:    zone,
         InstanceResource: &computepb.Instance{
-            Name: "example-instance",
+            Name: stringPtr("example-instance"),
             Disks: []*computepb.AttachedDisk{
                 {
                     InitializeParams: &computepb.AttachedDiskInitializeParams{
-                        SourceImage: "projects/debian-cloud/global/images/family/debian-10",
+                        SourceImage: stringPtr("projects/debian-cloud/global/images/family/debian-10"),
                     },
-                    AutoDelete: true,
-                    Boot:       true,
+                    AutoDelete: boolPtr(true),
+                    Boot:       boolPtr(true),
                 },
             },
-            MachineType: fmt.Sprintf("zones/%s/machineTypes/n1-standard-1", zone),
+            MachineType: stringPtr(fmt.Sprintf("zones/%s/machineTypes/n1-standard-1", zone)),
             NetworkInterfaces: []*computepb.NetworkInterface{
                 {
-                    Name: "global/networks/default",
+                    Name: stringPtr("global/networks/default"),
                 },
             },
         },

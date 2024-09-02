@@ -19,7 +19,7 @@ func main() {
 
 	// Crear una métrica personalizada
 	req := &monitoring.CreateTimeSeriesRequest{
-		Name: "projects/Practica docker",
+		Name: "projects/steel-totality-430001-n0",
 		TimeSeries: []*monitoring.TimeSeries{
 			{
 				Metric: &monitoring.Metric{
