@@ -45,7 +45,7 @@ func main() {
             Disks: []*computepb.AttachedDisk{
                 {
                     InitializeParams: &computepb.AttachedDiskInitializeParams{
-                        SourceImage: stringPtr("projects/debian-cloud/global/images/family/debian-10"),
+                        SourceImage: stringPtr("projects/debian-cloud/global/images/family/debian-11"),
                     },
                     AutoDelete: boolPtr(true),
                     Boot:       boolPtr(true),
